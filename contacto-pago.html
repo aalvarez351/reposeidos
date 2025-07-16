@@ -1,0 +1,25 @@
+<div class="d-flex gap-3 justify-content-center" style="margin-top: 2rem; flex-wrap: wrap; gap: 1rem;">
+  <a id="btnEmailPago" href="mailto:aalvarez351@gmail.com?subject=Interes%20en%20pago%20de%20suscripci%C3%B3n&body=Hola%2C%20quiero%20pagar%20la%20suscripci%C3%B3n.%20Mis%20datos%3A%0ANombre%3A%20%0ACorreo%3A%20%0APlan%3A%20%0A" 
+     class="btn btn-primary btn-lg" style="text-decoration:none; color:white; display:flex; align-items:center; gap:0.5rem;">
+    <i class="fas fa-envelope"></i> Contactar Ahora
+  </a>
+  <a id="btnWhatsAppPago" href="https://wa.me/50762982064?text=Hola%2C%20quiero%20pagar%20la%20suscripci%C3%B3n.%20Mis%20datos%3A%0ANombre%3A%20%0ACorreo%3A%20%0APlan%3A%20%0A" 
+     target="_blank" class="btn btn-outline-success btn-lg" style="text-decoration:none; display:flex; align-items:center; gap:0.5rem;">
+    <i class="fab fa-whatsapp"></i> WhatsApp
+  </a>
+</div>
+
+<script>
+// Al cargar la página, si tienes los datos del formulario, actualiza los enlaces con esos datos
+function actualizarLinksPago(nombre, email, plan) {
+  const bodyEmail = `Hola, quiero pagar la suscripción. Mis datos:%0ANombre: ${encodeURIComponent(nombre)}%0ACorreo: ${encodeURIComponent(email)}%0APlan: ${encodeURIComponent(plan)}%0A`;
+  const mailtoLink = `mailto:aalvarez351@gmail.com?subject=Interes%20en%20pago%20de%20suscripción&body=${bodyEmail}`;
+  const whatsappLink = `https://wa.me/50762982064?text=${bodyEmail}`;
+
+  document.getElementById('btnEmailPago').href = mailtoLink;
+  document.getElementById('btnWhatsAppPago').href = whatsappLink;
+}
+
+// Ejemplo: si tienes variables o inputs con esos datos, las pasas aquí
+// actualizarLinksPago('Andrey S. Álvarez', 'aalvarez351@gmail.com', 'Plan Premium');
+</script>

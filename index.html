@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inteligencia Reposeída Panamá</title>
+  <style>
+    /* Reset básico */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f2f7fb;
+      color: #223344;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(135deg, #004d7a, #008793);
+      color: white;
+      padding: 3rem 1rem 4rem 1rem;
+      text-align: center;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      font-weight: 500;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+      font-style: italic;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    }
+
+    nav {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav a {
+      color: #004d7a;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0 1.5rem;
+      font-size: 1.1rem;
+      padding: 0.5rem 0;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      border-bottom: 3px solid #008793;
+      outline: none;
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 1000px;
+      margin: 3rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    section {
+      background: white;
+      margin-bottom: 3rem;
+      border-radius: 12px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.07);
+      transition: box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    h2 {
+      color: #004d7a;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 3px solid #008793;
+      padding-bottom: 0.4rem;
+    }
+
+    ul {
+      padding-left: 1.3rem;
+      margin-top: 1rem;
+      color: #334455;
+      font-weight: 500;
+      line-height: 1.8;
+    }
+
+    ul li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.1rem;
+    }
+
+    ul li::before {
+      content: "✓";
+      color: #008793;
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+    }
+
+    .highlight {
+      background: #e0f2f7;
+      border-left: 5px solid #008793;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      font-weight: 600;
+      color: #005f73;
+      border-radius: 6px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 2rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      padding: 1rem;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      border-color: #008793;
+      outline: none;
+    }
+
+    button, .btn-pago {
+      background: #008793;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      display: inline-block;
+      margin-top: 1rem;
+      user-select: none;
+    }
+
+    button:hover, button:focus,
+    .btn-pago:hover, .btn-pago:focus {
+      background: #004d7a;
+      outline: none;
+    }
+
+    .btn-pago {
+      width: 100%;
+      max-width: 280px;
+    }
+
+    footer {
+      background: #002b45;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      user-select: none;
+    }
+
+    footer p + p {
+      margin-top: 0.4rem;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      nav {
+        flex-wrap: wrap;
+      }
+      nav a {
+        margin: 0.5rem 1rem;
+      }
+      main {
+        margin: 2rem 1rem 3rem;
+        padding: 0;
+      }
+      section {
+        padding: 2rem 1.5rem;
+      }
+      form {
+        max-width: 100%;
+      }
+      .btn-pago {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Inteligencia Reposeída Panamá</h1>
+    <p>Transformamos datos bancarios en decisiones estratégicas para tu inversión inmobiliaria</p>
+  </header>
+
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#planes">Planes</a>
+    <a href="#maestria">Nuestra Maestría</a>
+    <a href="#registro">Suscripción</a>
+  </nav>
+
+  <main>
+    <section id="servicios">
+      <h2>¿Qué hacemos por ti?</h2>
+      <p>Nos encargamos de escudriñar y analizar cada rincón del mercado de bienes reposeídos en Panamá. Mientras tú te enfocas en tus planes, nosotros:</p>
+      <div class="highlight">
+        <ul>
+          <li>Accedemos a las bases públicas y privadas de todos los bancos y financieras del país.</li>
+          <li>Recolectamos y organizamos la información de propiedades disponibles con herramientas de scraping automatizado.</li>
+          <li>Filtramos la información con criterios de rentabilidad, ubicación, plusvalía y estado físico.</li>
+          <li>Elaboramos informes con proyecciones realistas de inversión para cada tipo de comprador.</li>
+          <li>Seleccionamos las propiedades con mayor relación precio-valor.</li>
+          <li>Eliminamos ofertas engañosas o sin potencial de retorno.</li>
+          <li>Te entregamos un Top 10 mensual con gráficos, análisis comparativos y visión a largo plazo.</li>
+          <li>Recibes un correo mensual, visual, claro y accionable con toda esta información.</li>
+          <li>No necesitas buscar en múltiples sitios ni hablar con intermediarios.</li>
+          <li>Nosotros hacemos el trabajo duro. Tú tomas decisiones con datos reales.</li>
+          <li>Optimizamos tu tiempo y reducimos el riesgo de malas inversiones.</li>
+          <li>Te damos contexto financiero y técnico detrás de cada oportunidad.</li>
+          <li>Tenemos alertas activas si aparece un bien con alto rendimiento.</li>
+          <li>Actualizamos semanalmente nuestras fuentes de datos.</li>
+          <li>Somos independientes: nuestro análisis no está influenciado por bancos o agentes.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="planes">
+      <h2>Planes y Precios</h2>
+      <div class="plan">
+        <h3>📩 Plan Básico – $12.99 / mes</h3>
+        <ul>
+          <li>Informe mensual con Top 10 propiedades.</li>
+          <li>Análisis de precios bancarios vs. valor real.</li>
+          <li>Alertas resumidas de oportunidad.</li>
+        </ul>
+        <button class="btn-pago" data-plan="Plan Básico">Pagar Plan Básico</button>
+      </div>
+      <div class="plan">
+        <h3>📊 Plan Inversionista – $24.99 / mes</h3>
+        <ul>
+          <li>Todo lo del Plan Básico.</li>
+          <li>Comparativas entre bancos y entidades financieras.</li>
+          <li>Proyecciones de rentabilidad.</li>
+          <li>Informe en Excel descargable.</li>
+        </ul>
+        <button class="btn-pago" data-plan="Plan Inversionista">Pagar Plan Inversionista</button>
+      </div>
+      <div class="plan">
+        <h3>💼 Plan Premium – $49.99 / mes</h3>
+        <ul>
+          <li>Todo lo del Plan Inversionista.</li>
+          <li>Análisis personalizado y recomendaciones de inversión.</li>
+          <li>Consultoría online trimestral.</li>
+          <li>Acceso prioritario a alertas y bienes exclusivos.</li>
+        </ul>
+        <button class="btn-pago" data-plan="Plan Premium">Pagar Plan Premium</button>
+      </div>
+    </section>
+
+    <section id="maestria">
+      <h2>Nuestra Maestría</h2>
+      <p>Con años de experiencia en análisis financiero y de mercado inmobiliario, combinamos la inteligencia artificial con la recolección masiva de datos para ofrecerte un servicio único y de alta precisión.</p>
+      <p>Nuestro equipo multidisciplinario incluye economistas, ingenieros en informática y expertos en bienes raíces, lo que nos permite entregar reportes detallados, objetivos y accionables que se traducen en decisiones de inversión inteligentes.</p>
+      <p>Somos apasionados por la transparencia, la ética y la calidad. No vendemos propiedades, vendemos conocimiento valioso para que tú ganes.</p>
+    </section>
+
+    <section id="registro">
+      <h2>Suscríbete para recibir nuestro análisis</h2>
+      <p>Completa tu información para empezar a recibir reportes exclusivos, con análisis profundo y detallado cada mes.</p>
+      <form action="#" method="POST" id="formRegistro">
+        <input type="text" name="nombre" id="nombre" placeholder="Tu nombre completo" required />
+        <input type="email" name="email" id="email" placeholder="Tu correo electrónico" required />
+        <button type="submit">Suscribirme</button>
+      </form>
+    </section>
+
+    <section id="contacto-pago" style="display:none;">
+      <h2>Contacto para Pago</h2>
+      <div class="d-flex gap-3 justify-content-center" style="flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+        <a id="btnEmailPago" href="mailto:aalvarez351@gmail.com?subject=Interes%20en%20pago%20de%20suscripci%C3%B3n&body=Hola%2C%20quiero%20pagar%20la%20suscripci%C3%B3n.%20Mis%20datos%3A%0ANombre%3A%20%0ACorreo%3A%20%0APlan%3A%20%0A" 
+           class="btn btn-primary btn-lg" style="text-decoration:none; color:white; display:flex; align-items:center; gap:0.5rem;">
+          <i class="fas fa-envelope"></i> Contactar Ahora
+        </a>
+        <a id="btnWhatsAppPago" href="https://wa.me/50762982064?text=Hola%2C%20quiero%20pagar%20la%20suscripci%C3%B3n.%20Mis%20datos%3A%0ANombre%3A%20%0ACorreo%3A%20%0APlan%3A%20%0A" 
+           target="_blank" class="btn btn-outline-success btn-lg" style="text-decoration:none; display:flex; align-items:center; gap:0.5rem;">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 Inteligencia Reposeída Panamá. Todos los derechos reservados.</p>
+    <p>Plataforma independiente dedicada a análisis estratégico de bienes reposeídos.</p>
+  </footer>
+
+  <script src="form-google-sheets.js"></script>
+  <script>
+    // Actualiza los enlaces de pago en los botones Contactar / WhatsApp
+    function actualizarLinksPago(nombre, email, plan) {
+      const bodyEmail = `Hola, quiero pagar la suscripción. Mis datos:%0ANombre: ${encodeURIComponent(nombre)}%0ACorreo: ${encodeURIComponent(email)}%0APlan: ${encodeURIComponent(plan)}%0A`;
+      const mailtoLink = `mailto:aalvarez351@gmail.com?subject=Interes%20en%20pago%20de%20suscripción&body=${bodyEmail}`;
+      const whatsappLink = `https://wa.me/50762982064?text=${bodyEmail}`;
+
+      document.getElementById('btnEmailPago').href = mailtoLink;
+      document.getElementById('btnWhatsAppPago').href = whatsappLink;
+    }
+
+    // Mostrar sección de contacto pago y actualizar enlaces
+    function mostrarContactoPago(plan) {
+      const nombre = document.getElementById('nombre').value || 'Sin nombre';
+      const email = document.getElementById('email').value || 'Sin email';
+
+      actualizarLinksPago(nombre, email, plan);
+
+      document.getElementById('contacto-pago').style.display = 'block';
+      // Scroll al contacto pago para mejor UX
+      document.getElementById('contacto-pago').scrollIntoView({behavior: 'smooth'});
+    }
+
+    // Asociar eventos a botones de pago
+    document.addEventListener('DOMContentLoaded', () => {
+      const botonesPago = document.querySelectorAll('.btn-pago');
+      botonesPago.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const plan = btn.getAttribute('data-plan');
+          mostrarContactoPago(plan);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
